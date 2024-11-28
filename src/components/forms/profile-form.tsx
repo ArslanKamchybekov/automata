@@ -96,7 +96,7 @@ const ProfileForm = ({ user, onUpdate }: Props) => {
               Saving
             </>
           ) : (
-            'Save User Settings'
+            'Save Changes'
           )}
         </Button>
       </form>

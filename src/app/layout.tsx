@@ -3,7 +3,7 @@ import { DM_Sans } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/providers/theme-provider'
 import { ClerkProvider } from '@clerk/nextjs'
-// import ModalProvider from '@/providers/modal-provider'
+import ModalProvider from '@/providers/modal-provider'
 // import { Toaster } from '@/components/ui/sonner'
 // import { BillingProvider } from '@/providers/billing-provider'
 
@@ -31,12 +31,12 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {/* <BillingProvider>
-              <ModalProvider> */}
+            {/* <BillingProvider> */}
+              <ModalProvider>
                 {children}
-                {/* <Toaster />
+                {/* <Toaster /> */}
               </ModalProvider>
-            </BillingProvider> */}
+            {/* </BillingProvider> */}
           </ThemeProvider>
         </body>
       </html>

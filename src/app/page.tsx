@@ -6,12 +6,11 @@ import Navbar from '@/components/global/navbar'
 import { Button } from '@/components/ui/button'
 import { clients, products } from '@/lib/constant'
 import { CheckIcon } from 'lucide-react'
-import Image from 'next/image'
 
 export default function Home() {
   //WIP: remove fault IMAge for home page
   return (
-    <main className="flex items-center justify-center flex-col">
+    <main className="flex items-center justify-center flex-col text-white bg-black dark:bg-white dark:text-black">
       <Navbar />
       <section className="h-screen w-full  bg-neutral-950 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
         <div className="absolute inset-0  h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_35%,#223_100%)]"></div>
@@ -21,14 +20,14 @@ export default function Home() {
               <div className="flex items-center flex-col">
                 <Button
                   size={'lg'}
-                  className="p-8 mb-8 md:mb-0 text-xl font-bold w-full sm:w-fit border-t-2 rounded-full border-[#4D4D4D] bg-[#1F1F1F] hover:bg-white group transition-all flex items-center justify-center gap-4 hover:shadow-xl hover:shadow-neutral-500 duration-300"
+                  className="p-8 mb-8 md:mb-0 text-2xl w-full sm:w-fit border-t-2 rounded-full border-[#4D4D4D] bg-[#1F1F1F] hover:bg-white group transition-all flex items-center justify-center gap-4 hover:shadow-xl hover:shadow-neutral-500 duration-500"
                 >
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-neutral-500 to-neutral-600  md:text-center font-sans group-hover:bg-gradient-to-r group-hover:from-black goup-hover:to-black">
-                    Start Automating For Free
+                  <span className="bg-clip-text font-semibold text-transparent bg-gradient-to-r from-neutral-500 to-neutral-600  md:text-center font-sans group-hover:bg-gradient-to-r group-hover:from-black goup-hover:to-black">
+                    Get Started for Free
                   </span>
                 </Button>
                 <h1 className="text-5xl md:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
-                  Generate workflows and automate your business processes
+                  Generate No-Code Automations
                 </h1>
               </div>
             }
@@ -43,14 +42,10 @@ export default function Home() {
       />
       <section>
         <HeroParallax products={products}></HeroParallax>
-      </section>        
+      </section>
       <section>
-        <h1 className="mb-20 bg-gradient-to-br from-neutral-300 to-neutral-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl">
-          Plans That Fit You Best
-        </h1>
-
-        <div className="flex flex-wrap items-center justify-center flex-col md:flex-row gap-8">
-          <CardContainer className="inter-var ">
+        <div className="flex flex-wrap items-center justify-center flex-col md:flex-row gap-8 mb-8">
+          <CardContainer className="inter-var">
             <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
               <CardItem
                 translateZ="50"

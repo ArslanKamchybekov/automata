@@ -35,6 +35,7 @@ export type EditorCanvasTypes =
   | 'Trigger'
   | 'Action'
   | 'Wait'
+  | 'Discord'
 
 export type EditorCanvasCardType = {
   title: string
@@ -76,7 +77,12 @@ export type EditorActions =
       }
     }
   | { type: 'REDO' }
-  | { type: 'UNDO' }
+  | { 
+      type: 'UNDO' 
+      payload: {
+        id: string
+      }
+    }
   | {
       type: 'SELECTED_ELEMENT'
       payload: {

@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import Image from 'next/image'
 import {
   Calendar,
   CircuitBoard,
@@ -57,9 +58,12 @@ const EditorCanvasIconHelper = ({ type }: Props) => {
       )
     case 'Notion':
       return (
-        <Database
+        <Image
+          src="/notion.png"
+          alt="Notion"
+          width={30}
+          height={30}
           className="flex-shrink-0"
-          size={30}
         />
       )
     case 'Custom Webhook':
@@ -95,6 +99,16 @@ const EditorCanvasIconHelper = ({ type }: Props) => {
         <Timer
           className="flex-shrink-0"
           size={30}
+        />
+      )
+    case 'Discord':
+      return (
+        <Image
+          src="/discord.png"
+          alt="Discord"
+          width={30}
+          height={30}
+          className="flex-shrink-0"
         />
       )
     default:

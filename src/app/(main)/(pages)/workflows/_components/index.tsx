@@ -1,7 +1,7 @@
 import React from 'react'
-import { onGetWorkflows } from '../_actions/workflow-connections'
-// import MoreCredits from './more-creadits'
 import Workflow from './workflow'
+import { onGetWorkflows } from '../_actions/workflow-connections'
+//import MoreCredits from './more-creadits'
 
 type Props = object
 
@@ -12,7 +12,7 @@ const Workflows = async (props: Props) => {
       <section className="flex flex-col m-2">
         {/* <MoreCredits /> */}
         {workflows?.length ? (
-          workflows.map((flow: any) => (
+          workflows.map((flow) => (
             <Workflow
               key={flow.id}
               {...flow}

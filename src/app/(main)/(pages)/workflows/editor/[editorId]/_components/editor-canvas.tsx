@@ -30,7 +30,7 @@ import FlowInstance from './flow-instance'
 import EditorCanvasSidebar from './editor-canvas-sidebar'
 import { onGetNodesEdges } from '../../../_actions/workflow-connections'
 
-type Props = {}
+type Props = object
 
 const initialNodes: EditorNodeType[] = []
 
@@ -180,7 +180,7 @@ const EditorCanvas = (props: Props) => {
 
   return (
     <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel defaultSize={70}>
+      <ResizablePanel defaultSize={120}>
         <div className="flex h-full items-center justify-center">
           <div
             style={{ width: '100%', height: '100%', paddingBottom: '70px' }}

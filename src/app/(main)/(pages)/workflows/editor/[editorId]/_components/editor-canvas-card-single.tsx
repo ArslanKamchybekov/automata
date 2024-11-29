@@ -13,8 +13,8 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import clsx from 'clsx'
+import { XIcon } from 'lucide-react'
 
-type Props = {}
 
 const EditorCanvasCardSingle = ({ data }: { data: EditorCanvasCardType }) => {
   const { dispatch, state } = useEditor()
@@ -36,7 +36,7 @@ const EditorCanvasCardSingle = ({ data }: { data: EditorCanvasCardType }) => {
         onClick={(e) => {
           e.stopPropagation()
           const val = state.editor.elements.find((n) => n.id === nodeId)
-          if (val)
+          if (val && nodeId)
             dispatch({
               type: 'SELECTED_ELEMENT',
               payload: {
@@ -47,7 +47,7 @@ const EditorCanvasCardSingle = ({ data }: { data: EditorCanvasCardType }) => {
         className="relative max-w-[400px] dark:border-muted-foreground/70"
       >
         <CardHeader className="flex flex-row items-center gap-4">
-          <div>{logo}</div>
+          {logo}
           <div>
             <CardTitle className="text-md">{data.title}</CardTitle>
             <CardDescription>

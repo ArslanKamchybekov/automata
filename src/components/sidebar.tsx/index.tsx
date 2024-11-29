@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import {
@@ -26,7 +27,12 @@ const MenuOptions = (props: Props) => {
           className="flex font-bold flex-row "
           href="/"
         >
-          automata.
+          <Image
+            src="/fuzzieLogo.png"
+            alt="logo"
+            width={20}
+            height={20}
+          />
         </Link>
         <TooltipProvider>
           {menuOptions.map((menuItem: any) => (

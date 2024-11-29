@@ -58,7 +58,6 @@ const ContentBasedOnTitle = ({
         '/api/drive'
       )
       if (response) {
-        console.log(response.data.message.files[0])
         toast.message("Fetched File")
         setFile(response.data.message.files[0])
       } else {
@@ -70,7 +69,7 @@ const ContentBasedOnTitle = ({
 
   // @ts-ignore
   const nodeConnectionType: any = nodeConnection[nodeMapper[title]]
-  if (!nodeConnectionType) return <p>Not connected</p>
+  if (!nodeConnectionType) return <p className="text-red-500 m-0.3">Not connected</p>
 
   const isConnected =
     title === 'Google Drive'

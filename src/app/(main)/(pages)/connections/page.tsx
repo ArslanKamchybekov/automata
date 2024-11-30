@@ -5,6 +5,7 @@ import { currentUser } from '@clerk/nextjs/server'
 import { onDiscordConnect } from './_actions/discord-connection'
 import { onNotionConnect } from './_actions/notion-connection'
 import { onSlackConnect } from './_actions/slack-connection'
+import { onOpenAIConnect } from './_actions/openai-connection'
 import { getUserData } from './_actions/get-user'
 
 type Props = {
@@ -31,6 +32,7 @@ const Connections = async (props: Props) => {
     bot_user_id,
     team_id,
     team_name,
+    openai_api_key,
   } = props.searchParams ?? {
     webhook_id: '',
     webhook_name: '',
@@ -50,6 +52,7 @@ const Connections = async (props: Props) => {
     bot_user_id: '',
     team_id: '',
     team_name: '',
+    openai_api_key: '',
   }
 
   const user = await currentUser()
@@ -74,7 +77,6 @@ const Connections = async (props: Props) => {
       database_id!,
       user.id
     )
-
     await onSlackConnect(
       app_id!,
       authed_user_id!,
@@ -85,7 +87,10 @@ const Connections = async (props: Props) => {
       team_name!,
       user.id
     )
-
+    await onOpenAIConnect(
+      openai_api_key!, 
+      user.id
+    )
     const connections: any = {}
 
     const user_info = await getUserData(user.id)

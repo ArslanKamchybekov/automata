@@ -40,6 +40,19 @@ export const onDiscordContent = (
   }))
 }
 
+export const onOpenAIContent = (
+  nodeConnection: ConnectionProviderProps,
+  event: React.ChangeEvent<HTMLInputElement>
+) => {
+  nodeConnection.setOpenAINode((prev: any) => {
+    const newContent = event.target.value
+    return {
+      ...prev,
+      content: newContent,
+    }
+  })
+}
+
 export const onContentChange = (
   nodeConnection: ConnectionProviderProps,
   nodeType: string,
@@ -51,7 +64,26 @@ export const onContentChange = (
     onDiscordContent(nodeConnection, event)
   } else if (nodeType === 'Notion') {
     onNotionContent(nodeConnection, event)
+  } else if (nodeType === 'OpenAI') {
+    onOpenAIContent(nodeConnection, event)
   }
+}
+
+export const fetchBotSlackChannels = async (
+  token: string,
+  setSlackChannels: (slackChannels: Option[]) => void
+) => {
+  await listBotChannels(token)?.then((channels) => setSlackChannels(channels))
+}
+
+export const onNotionContent = (
+  nodeConnection: ConnectionProviderProps,
+  event: React.ChangeEvent<HTMLInputElement>
+) => {
+  nodeConnection.setNotionNode((prev: any) => ({
+    ...prev,
+    content: event.target.value,
+  }))
 }
 
 export const onAddTemplateSlack = (
@@ -85,6 +117,7 @@ export const onAddTemplate = (
     onAddTemplateDiscord(nodeConnection, template)
   }
 }
+
 
 export const onConnections = async (
   nodeConnection: ConnectionProviderProps,
@@ -140,21 +173,9 @@ export const onConnections = async (
       })
     }
   }
-}
-
-export const fetchBotSlackChannels = async (
-  token: string,
-  setSlackChannels: (slackChannels: Option[]) => void
-) => {
-  await listBotChannels(token)?.then((channels) => setSlackChannels(channels))
-}
-
-export const onNotionContent = (
-  nodeConnection: ConnectionProviderProps,
-  event: React.ChangeEvent<HTMLInputElement>
-) => {
-  nodeConnection.setNotionNode((prev: any) => ({
-    ...prev,
-    content: event.target.value,
-  }))
+  if (editorState.editor.selectedNode.data.title == 'OpenAI') {
+    nodeConnection.setOpenAINode({
+      content: '',
+    })
+  }
 }

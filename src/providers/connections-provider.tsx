@@ -34,11 +34,16 @@ export type ConnectionProviderProps = {
     content: string
   }
   setSlackNode: React.Dispatch<React.SetStateAction<any>>
+  openAINode: {
+    content: string
+  }
+  setOpenAINode: React.Dispatch<React.SetStateAction<any>>
   setWorkFlowTemplate: React.Dispatch<
     React.SetStateAction<{
       discord?: string
       notion?: string
       slack?: string
+      openai?: string
     }>
   >
   isLoading: boolean
@@ -78,11 +83,15 @@ const InitialValues: ConnectionProviderProps = {
     teamName: '',
     content: '',
   },
+  openAINode: {
+    content: '',
+  },
   isLoading: false,
   setGoogleNode: () => undefined,
   setDiscordNode: () => undefined,
   setNotionNode: () => undefined,
   setSlackNode: () => undefined,
+  setOpenAINode: () => undefined,
   setIsLoading: () => undefined,
   setWorkFlowTemplate: () => undefined,
 }
@@ -95,6 +104,7 @@ export const ConnectionsProvider = ({ children }: ConnectionWithChildProps) => {
   const [googleNode, setGoogleNode] = useState(InitialValues.googleNode)
   const [notionNode, setNotionNode] = useState(InitialValues.notionNode)
   const [slackNode, setSlackNode] = useState(InitialValues.slackNode)
+  const [openAINode, setOpenAINode] = useState(InitialValues.openAINode)
   const [isLoading, setIsLoading] = useState(InitialValues.isLoading)
   const [workflowTemplate, setWorkFlowTemplate] = useState(
     InitialValues.workflowTemplate
@@ -109,6 +119,8 @@ export const ConnectionsProvider = ({ children }: ConnectionWithChildProps) => {
     setNotionNode,
     slackNode,
     setSlackNode,
+    openAINode,
+    setOpenAINode,
     isLoading,
     setIsLoading,
     workflowTemplate,

@@ -134,6 +134,19 @@ export const onCreateNodeTemplate = async (
 
     if (response) return 'Notion template saved'
   }
+
+  if (type === 'OpenAI') {
+    const response = await db.workflows.update({
+      where: {
+        id: workflowId,
+      },
+      data: {
+        openaiTemplate: content,
+      },
+    })
+
+    if (response) return 'OpenAI template saved'
+  }
 }
 
 export const onGetWorkflows = async () => {

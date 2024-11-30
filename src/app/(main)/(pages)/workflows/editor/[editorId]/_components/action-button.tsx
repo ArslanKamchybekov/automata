@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Option } from './content-based-on-title'
 import { ConnectionProviderProps } from '@/providers/connections-provider'
 import { usePathname } from 'next/navigation'
@@ -8,6 +8,8 @@ import { onCreateNodeTemplate } from '../../../_actions/workflow-connections'
 import { toast } from 'sonner'
 import { onCreateNewPageInDatabase } from '@/app/(main)/(pages)/connections/_actions/notion-connection'
 import { postMessageToSlack } from '@/app/(main)/(pages)/connections/_actions/slack-connection'
+import { getOpenAICompletion } from '@/app/(main)/(pages)/connections/_actions/openai-connection'
+import ReactMarkdown from 'react-markdown'
 
 type Props = {
   currentService: string
@@ -23,6 +25,7 @@ const ActionButton = ({
   setChannels,
 }: Props) => {
   const pathname = usePathname()
+  const [openAIOutput, setOpenAIOutput] = useState<string | null>(null) // State for OpenAI response
 
   const onSendDiscordMessage = useCallback(async () => {
     const response = await postContentToWebHook(
@@ -117,6 +120,19 @@ const ActionButton = ({
     }
   }, [nodeConnection, channels])
 
+  const onSendOpenAIRequest = useCallback(async () => {
+    const response = await getOpenAICompletion(
+      nodeConnection.openAINode.content
+    )
+    console.log(nodeConnection.openAINode.content)
+    if (response) {
+      toast.message('Prompt sent to OpenAI')
+      setOpenAIOutput(response)
+      console.log(response)
+    }
+  }
+  , [nodeConnection.openAINode])
+
   const renderActionButton = () => {
     switch (currentService) {
       case 'Discord':
@@ -172,6 +188,29 @@ const ActionButton = ({
             </Button>
           </>
         )
+
+      case 'OpenAI':
+        return (
+          <>
+            <Button
+              variant="outline"
+              onClick={onSendOpenAIRequest}
+            >
+              Send Prompt
+            </Button>
+            <Button
+              onClick={onCreateLocalNodeTempate}
+              variant="outline"
+            >
+              Save Template
+            </Button>
+            {openAIOutput && (
+              <div style={{ marginTop: '1rem', padding: '1rem', border: '1px solid #ccc', borderRadius: '0.5rem' }}>
+                <ReactMarkdown>{openAIOutput}</ReactMarkdown>
+              </div>
+            )}
+          </>
+        )  
 
       default:
         return null

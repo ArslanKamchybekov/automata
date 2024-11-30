@@ -8,7 +8,6 @@ const Page = (props: Props) => {
     const router = useRouter();
 
     useEffect(() => {
-        // Redirect to '/workflows' and trigger the WorkflowButton click event
         router.push('/workflows');
     
         const workflowButton = document.getElementById('workflow-button') as HTMLElement;

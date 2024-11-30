@@ -92,9 +92,6 @@ const EditorCanvas = (props: Props) => {
         return
       }
 
-      // reactFlowInstance.project was renamed to reactFlowInstance.screenToFlowPosition
-      // and you don't need to subtract the reactFlowBounds.left/top anymore
-      // details: https://reactflow.dev/whats-new/2023-11-10
       if (!reactFlowInstance) return
       const position = reactFlowInstance.screenToFlowPosition({
         x: event.clientX,
@@ -107,6 +104,7 @@ const EditorCanvas = (props: Props) => {
         position,
         data: {
           title: type,
+          //@ts-ignore
           description: EditorCanvasDefaultCardTypes[type].description,
           completed: false,
           current: false,
@@ -151,7 +149,7 @@ const EditorCanvas = (props: Props) => {
       Trigger: EditorCanvasCardSingle,
       Email: EditorCanvasCardSingle,
       Condition: EditorCanvasCardSingle,
-      AI: EditorCanvasCardSingle,
+      OpenAI: EditorCanvasCardSingle,
       Slack: EditorCanvasCardSingle,
       'Google Drive': EditorCanvasCardSingle,
       Notion: EditorCanvasCardSingle,

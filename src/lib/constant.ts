@@ -7,9 +7,6 @@ import Settings from '@/components/icons/settings'
 import Workflows from '@/components/icons/workflows'
 import { Connection } from './types'
 
-export const clients = [...new Array(10)].map((client, index) => ({
-  href: `/${index + 1}.png`,
-}))
 
 export const products = [
   {
@@ -108,7 +105,7 @@ export const EditorCanvasDefaultCardTypes = {
     description: 'Boolean operator that creates different conditions lanes.',
     type: 'Action',
   },
-  AI: {
+  OpenAI: {
     description:
       'Use the power of AI to summarize, respond, create and much more.',
     type: 'Action',
@@ -148,6 +145,12 @@ export const EditorCanvasDefaultCardTypes = {
 }
 
 export const CONNECTIONS: Connection[] = [
+  {
+    title: 'OpenAI',
+    description: 'Use the power of AI to generate text and much more.',
+    image: '/openai.png',
+    connectionKey: 'openAINode',
+  },
   {
     title: 'Google Drive',
     description: 'Connect your google drive to listen to folder changes',

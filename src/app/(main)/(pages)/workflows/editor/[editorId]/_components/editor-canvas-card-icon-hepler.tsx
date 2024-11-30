@@ -35,11 +35,14 @@ const EditorCanvasIconHelper = ({ type }: Props) => {
           size={30}
         />
       )
-    case 'AI':
+    case 'OpenAI':
       return (
-        <CircuitBoard
+        <Image  
+          src="/openai.png"
+          alt="OpenAI"
+          width={30}
+          height={30}
           className="flex-shrink-0"
-          size={30}
         />
       )
     case 'Slack':

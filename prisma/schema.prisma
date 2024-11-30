@@ -32,6 +32,7 @@ model User {
   DiscordWebhook        DiscordWebhook[]
   Notion                Notion[]
   Slack                 Slack[]
+  OpenAI                OpenAI[]
   connections           Connections[]
   workflows             Workflows[]
 }
@@ -93,6 +94,14 @@ model Notion {
   connections   Connections[]
 }
 
+model OpenAI {
+  id          String @id @default(uuid())
+  apiKey      String @unique
+  user        User   @relation(fields: [userId], references: [clerkId])
+  userId      String
+  connections Connections[]
+}
+
 model Connections {
   id               String          @id @default(uuid())
   type             String          @unique
@@ -104,6 +113,8 @@ model Connections {
   userId           String?
   Slack            Slack?          @relation(fields: [slackId], references: [id])
   slackId          String?
+  OpenAI           OpenAI?         @relation(fields: [openaiId], references: [id])
+  openaiId         String?
 }
 
 model Workflows {
@@ -114,6 +125,7 @@ model Workflows {
   discordTemplate   String?
   notionTemplate    String?
   slackTemplate     String?
+  openaiTemplate    String?
   slackChannels     String[]
   slackAccessToken  String?
   notionAccessToken String?

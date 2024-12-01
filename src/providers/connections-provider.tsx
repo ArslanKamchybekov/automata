@@ -34,6 +34,12 @@ export type ConnectionProviderProps = {
     content: string
   }
   setSlackNode: React.Dispatch<React.SetStateAction<any>>
+  airtableNode: {
+    airtableAccessToken: string
+    baseId: string
+    content: string
+  }
+  setAirtableNode: React.Dispatch<React.SetStateAction<any>>
   openAINode: {
     content: string
   }
@@ -86,12 +92,18 @@ const InitialValues: ConnectionProviderProps = {
   openAINode: {
     content: '',
   },
+  airtableNode: {
+    airtableAccessToken: '',
+    baseId: '',
+    content: '',
+  },
   isLoading: false,
   setGoogleNode: () => undefined,
   setDiscordNode: () => undefined,
   setNotionNode: () => undefined,
   setSlackNode: () => undefined,
   setOpenAINode: () => undefined,
+  setAirtableNode: () => undefined,
   setIsLoading: () => undefined,
   setWorkFlowTemplate: () => undefined,
 }
@@ -105,6 +117,7 @@ export const ConnectionsProvider = ({ children }: ConnectionWithChildProps) => {
   const [notionNode, setNotionNode] = useState(InitialValues.notionNode)
   const [slackNode, setSlackNode] = useState(InitialValues.slackNode)
   const [openAINode, setOpenAINode] = useState(InitialValues.openAINode)
+  const [airtableNode, setAirtableNode] = useState(InitialValues.airtableNode)
   const [isLoading, setIsLoading] = useState(InitialValues.isLoading)
   const [workflowTemplate, setWorkFlowTemplate] = useState(
     InitialValues.workflowTemplate
@@ -121,6 +134,8 @@ export const ConnectionsProvider = ({ children }: ConnectionWithChildProps) => {
     setSlackNode,
     openAINode,
     setOpenAINode,
+    airtableNode,
+    setAirtableNode,
     isLoading,
     setIsLoading,
     workflowTemplate,

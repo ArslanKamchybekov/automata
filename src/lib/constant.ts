@@ -126,6 +126,10 @@ export const EditorCanvasDefaultCardTypes = {
     description: 'Post messages to your discord server',
     type: 'Action',
   },
+  Airtable: {
+    description: 'Connect with Airtable to trigger actions.',
+    type: 'Action',
+  },
   'Google Calendar': {
     description: 'Create a calendar invite.',
     type: 'Action',
@@ -180,5 +184,11 @@ export const CONNECTIONS: Connection[] = [
     connectionKey: 'slackNode',
     accessTokenKey: 'slackAccessToken',
     slackSpecial: true,
+  },
+  {
+    title: 'Airtable',
+    description: 'Connect your airtable to listen to changes in the base.',
+    image: '/airtable.png',
+    connectionKey: 'airtableNode',
   },
 ]

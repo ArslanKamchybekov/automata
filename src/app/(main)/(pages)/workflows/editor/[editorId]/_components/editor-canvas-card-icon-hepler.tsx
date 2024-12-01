@@ -69,6 +69,16 @@ const EditorCanvasIconHelper = ({ type }: Props) => {
           className="flex-shrink-0"
         />
       )
+    case 'Airtable':
+      return (
+        <Image
+          src="/airtable.png"
+          alt="Airtable"
+          width={30}
+          height={30}
+          className="flex-shrink-0"
+        />
+      )  
     case 'Custom Webhook':
       return (
         <Webhook

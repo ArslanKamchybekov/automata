@@ -11,7 +11,7 @@ export const WorkflowFormSchema = z.object({
   description: z.string().min(1, 'Required'),
 })
 
-export type ConnectionTypes = 'Google Drive' | 'Notion' | 'Slack' | 'Discord' | 'OpenAI'
+export type ConnectionTypes = 'Google Drive' | 'Notion' | 'Slack' | 'Discord' | 'OpenAI' | 'Airtable'
 
 export type Connection = {
   title: ConnectionTypes
@@ -37,6 +37,7 @@ export type EditorCanvasTypes =
   | 'Wait'
   | 'Discord'
   | 'OpenAI'
+  | 'Airtable'
 
 export type EditorCanvasCardType = {
   title: string
@@ -97,4 +98,5 @@ export const nodeMapper: Record<string, string> = {
   Discord: 'discordNode',
   'Google Drive': 'googleNode',
   OpenAI: 'openAINode',
+  Airtable: 'airtableNode',
 }

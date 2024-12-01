@@ -59,6 +59,8 @@ const ConnectionCard = ({
                 ? process.env.NEXT_PUBLIC_NOTION_AUTH_URL!
                 : title === 'Slack'
                 ? process.env.NEXT_PUBLIC_SLACK_REDIRECT!
+                : title === 'Airtable'
+                ? process.env.NEXT_PUBLIC_AIRTABLE_REDIRECT!
                 : '#'
             }
             className="rounded-lg bg-primary p-2 font-bold text-primary-foreground hover:bg-primary/80"

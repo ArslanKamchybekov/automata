@@ -11,6 +11,7 @@ import {
   listBotChannels,
 } from '@/app/(main)/(pages)/connections/_actions/slack-connection'
 import { Option } from '@/components/ui/multiple-selector'
+import { getAirtableConnection } from '@/app/(main)/(pages)/connections/_actions/airtable-connection'
 
 export const onDragStart = (
   event: any,
@@ -169,6 +170,16 @@ export const onConnections = async (
         teamId: connection.teamId,
         teamName: connection.teamName,
         userId: connection.userId,
+        content: '',
+      })
+    }
+  }
+  if (editorState.editor.selectedNode.data.title == 'Airtable') {
+    const connection = await getAirtableConnection()
+    if (connection) {
+      nodeConnection.setAirtableNode({
+        airtableAccessToken: connection.airtableAccessToken,
+        baseId: connection.baseId,
         content: '',
       })
     }

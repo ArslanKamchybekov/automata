@@ -78,6 +78,8 @@ const ContentBasedOnTitle = ({
               ? 'accessToken'
               : title === 'OpenAI'
               ? 'openAIKey'
+              : title === 'Airtable'
+              ? 'airtableAccessToken'
               : ''
           }`
         ];

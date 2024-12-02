@@ -25,7 +25,7 @@ const ActionButton = ({
   setChannels,
 }: Props) => {
   const pathname = usePathname()
-  const [openAIOutput, setOpenAIOutput] = useState<string | null>(null) // State for OpenAI response
+  const [openAIOutput, setOpenAIOutput] = useState<string | null>(null)
 
   const onSendDiscordMessage = useCallback(async () => {
     const response = await postContentToWebHook(
@@ -112,6 +112,30 @@ const ActionButton = ({
         [],
         nodeConnection.notionNode.accessToken,
         nodeConnection.notionNode.databaseId
+      )
+
+      if (response) {
+        toast.message(response)
+      }
+    }
+
+    if (currentService === 'OpenAI') {
+      const response = await onCreateNodeTemplate(
+        nodeConnection.openAINode.content,
+        currentService,
+        pathname.split('/').pop()!
+      )
+
+      if (response) {
+        toast.message(response)
+      }
+    }
+
+    if (currentService === 'Airtable') {
+      const response = await onCreateNodeTemplate(
+        nodeConnection.airtableNode.content,
+        currentService,
+        pathname.split('/').pop()!
       )
 
       if (response) {
@@ -210,6 +234,16 @@ const ActionButton = ({
               </div>
             )}
           </>
+        )  
+      
+      case 'Airtable':
+        return (
+          <Button
+            onClick={onCreateLocalNodeTempate}
+            variant="outline"
+          >
+            Save Template
+          </Button>
         )  
 
       default:

@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
             const baseId = baseData.bases[0].id;
             
             return NextResponse.redirect(
-                `https://localhost:3000/connections?&base_id=${baseId}&airtable_access_token=${data.access_token}`
+                `https://localhost:3000/connections?airtable_access_token=${data.access_token}&base_id=${baseId}`
             );
         }
     }

@@ -35,13 +35,12 @@ export default clerkMiddleware(async (auth, req) => {
   //   return NextResponse.next();
   // }
 
-  // const userId = (await auth()).userId
+  const userId = (await auth()).userId
 
-  // // Handle protected routes
-  // if (!userId) {
-  //   const signInUrl = new URL('/sign-in', req.url);
-  //   return NextResponse.redirect(signInUrl);
-  // }
+  if (!userId) {
+    const signInUrl = new URL('/sign-in', req.url);
+    return NextResponse.redirect(signInUrl);
+  }
 
   return NextResponse.next();
 });

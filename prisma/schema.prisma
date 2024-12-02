@@ -143,7 +143,7 @@ model Workflows {
   notionAccessToken String?
   notionDbId        String?
   airtableAccessToken String?
-  airtableBaseId           String?
+  airtableBaseId    String?
   flowPath          String?
   cronPath          String?
   publish           Boolean? @default(false)

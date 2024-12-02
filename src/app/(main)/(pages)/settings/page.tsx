@@ -1,29 +1,33 @@
-import ProfileForm from '@/components/forms/profile-form'
-import React from 'react'
-import { db } from '@/lib/db'
-import { currentUser } from '@clerk/nextjs/server'
+import ProfileForm from '@/components/forms/profile-form';
+import React from 'react';
+import { db } from '@/lib/db';
+import { currentUser } from '@clerk/nextjs/server';
 
-type Props = object
+const Settings = async () => {
+  const authUser = await currentUser();
 
-const Settings = async (props: Props) => {
-  const authUser = await currentUser()
-  if (!authUser) return null
+  if (!authUser) {
+    return <div>Please log in to view this page.</div>;
+  }
 
-  const user = await db.user.findUnique({ where: { clerkId: authUser.id } })
+  const user = await db.user.findUnique({ where: { clerkId: authUser.id } });
+  if (!user) {
+    return <div>User not found. Please try again later.</div>;
+  }
 
   const updateUserInfo = async (name: string) => {
-    'use server'
-
-    const updateUser = await db.user.update({
-      where: {
-        clerkId: authUser.id,
-      },
-      data: {
-        name,
-      },
-    })
-    return updateUser
-  }
+    'use server';
+    try {
+      const updateUser = await db.user.update({
+        where: { clerkId: authUser.id },
+        data: { name },
+      });
+      return updateUser;
+    } catch (error) {
+      console.error('Error updating user:', error);
+      throw new Error('Failed to update user. Please try again.');
+    }
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -37,13 +41,10 @@ const Settings = async (props: Props) => {
             Add or update your information
           </p>
         </div>
-        <ProfileForm
-          user={user}
-          onUpdate={updateUserInfo}
-        />
+        <ProfileForm user={user} onUpdate={updateUserInfo} />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Settings
+export default Settings;

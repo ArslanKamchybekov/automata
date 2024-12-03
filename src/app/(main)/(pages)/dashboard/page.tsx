@@ -9,8 +9,6 @@ const DashboardPage = async () => {
 
   const userData = user?.id ? await getUserData(user.id) : null
 
-  console.log(userData)
-
   return (
     <div className="flex flex-col gap-6 relative">
       <h1 className="text-4xl font-bold sticky top-0 z-[10] p-6 bg-background/50 backdrop-blur-lg flex items-center border-b">

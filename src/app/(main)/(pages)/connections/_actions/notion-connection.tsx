@@ -80,8 +80,6 @@ export const onCreateNewPageInDatabase = async (
   const notion = new Client({
     auth: accessToken,
   })
-
-  console.log(databaseId)
   const response = await notion.pages.create({
     parent: {
       type: 'database_id',

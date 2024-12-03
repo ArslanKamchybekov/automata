@@ -42,11 +42,6 @@ const ActionButton = ({
   }, [nodeConnection.discordNode])
 
   const onStoreNotionContent = useCallback(async () => {
-    console.log(
-      nodeConnection.notionNode.databaseId,
-      nodeConnection.notionNode.accessToken,
-      nodeConnection.notionNode.content
-    )
     const response = await onCreateNewPageInDatabase(
       nodeConnection.notionNode.databaseId,
       nodeConnection.notionNode.accessToken,
@@ -148,11 +143,9 @@ const ActionButton = ({
     const response = await getOpenAICompletion(
       nodeConnection.openAINode.content
     )
-    console.log(nodeConnection.openAINode.content)
     if (response) {
       toast.message('Prompt sent to OpenAI')
       setOpenAIOutput(response)
-      console.log(response)
     }
   }
   , [nodeConnection.openAINode])

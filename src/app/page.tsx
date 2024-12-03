@@ -24,7 +24,7 @@ export default async function Home() {
                   className="p-8 mb-8 md:mb-0 text-2xl w-full sm:w-fit border-t-2 rounded-full border-[#4D4D4D] bg-[#1F1F1F] hover:bg-white group transition-all flex items-center justify-center gap-4 hover:shadow-xl hover:shadow-neutral-500 duration-500"
                 >
                   <Link
-                    className="bg-clip-text font-semibold text-transparent bg-gradient-to-r from-neutral-500 to-neutral-600 md:text-center font-sans group-hover:bg-gradient-to-r group-hover:from-black group-hover:to-black"
+                    className="bg-clip-text font-bold text-transparent bg-gradient-to-r from-neutral-500 to-neutral-600 md:text-center font-sans group-hover:bg-gradient-to-r group-hover:from-black group-hover:to-black"
                     href={user ? '/dashboard' : '/sign-in'}
                   >
                     Get Started for Free
@@ -46,8 +46,8 @@ export default async function Home() {
 
       {/* Pricing Section */}
       <section className="flex flex-col items-center justify-center w-full h-full py-16">
-        <h1 className="text-4xl font-bold text-neutral-500 dark:text-white">
-          PRICING
+        <h1 className="text-5xl font-bold text-neutral-500 dark:text-white">
+          Plans that fit your needs
         </h1>
       </section>
 

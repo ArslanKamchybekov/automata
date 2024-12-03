@@ -49,7 +49,7 @@ const InfoBar = (props: Props) => {
       </button>
       <button
         onClick={() => {
-          window.location.href = '';
+          window.location.href = 'https://cookie-paper-810.notion.site/Automata-Documentation-Write-up-15034142cd0c806a8a1bc8803dee22a4';
         }}
       >
         <Book size={24} />

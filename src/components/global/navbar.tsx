@@ -17,7 +17,7 @@ const Navbar = async (props: Props) => {
           src="/logo.png"
           width={15}
           height={15}
-          alt="fuzzie logo"
+          alt="logo"
           className="shadow-sm"
         />
         <p className="text-3xl font-bold text-white">omata</p>
@@ -31,7 +31,7 @@ const Navbar = async (props: Props) => {
             <Link href="#pricing">Pricing</Link>
           </li>
           <li>
-            <Link href="/">Documentation</Link>
+            <Link href="https://cookie-paper-810.notion.site/Automata-Documentation-Write-up-15034142cd0c806a8a1bc8803dee22a4">Documentation</Link>
           </li>
         </ul>
       </nav>

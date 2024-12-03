@@ -28,7 +28,7 @@ const MenuOptions = (props: Props) => {
           href="/"
         >
           <Image
-            src="/fuzzieLogo.png"
+            src="/project_logo.png"
             alt="logo"
             width={25}
             height={25}

@@ -13,7 +13,6 @@ import {
   CardTitle,
 } from '@/components/ui/card'
 import clsx from 'clsx'
-import { XIcon } from 'lucide-react'
 
 
 const EditorCanvasCardSingle = ({ data }: { data: EditorCanvasCardType }) => {
